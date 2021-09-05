@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class s_LevelManage : MonoBehaviour
 {
@@ -11,11 +11,18 @@ public class s_LevelManage : MonoBehaviour
     [SerializeField] private GameObject LevelCompletePanel;
 
     [SerializeField] private GameObject Player;
+
+    [SerializeField] private int LevelIndex;
+    [SerializeField] private GameObject[] LevelScene;
+    private void Awake()
+    {
+        LevelIndex = PlayerPrefs.GetInt("LevelIndex", 0);
+        LevelIndex = Mathf.Clamp(LevelIndex, 0, LevelScene.Length-1);
+        Instantiate(LevelScene[LevelIndex]);
+    }
     void Start()
     {
         EnemyCount = EnemyCountShow;
-
-        //
         Player = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -30,6 +37,16 @@ public class s_LevelManage : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
 
+
         }
+    }
+    public void OnNextLevel()
+    {
+        LevelIndex += 1;
+        PlayerPrefs.SetInt("LevelIndex", LevelIndex);
+    }
+    public void OnLoadLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

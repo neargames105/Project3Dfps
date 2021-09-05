@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-using DG.Tweening;
+//using DG.Tweening;
 
 public class s_GunSystem : MonoBehaviour
 {
@@ -14,12 +12,12 @@ public class s_GunSystem : MonoBehaviour
     #region Gun Setting
     [SerializeField] private int bulletHolder;
     [SerializeField] private int bulletHolderMax;
-    [SerializeField] private Text bulletGui;
+    [SerializeField] private GameObject bulletGui;
     #endregion
 
     void Start()
     {
-        
+        bulletGui = GameObject.FindGameObjectWithTag("BulletGui");
     }
 
     // Update is called once per frame
@@ -31,8 +29,8 @@ public class s_GunSystem : MonoBehaviour
             //fire
             Fire();
             bulletHolder--;
-            Camera.main.transform.DOComplete();
-            Camera.main.transform.DOShakePosition(.2f, .01f, 10, 90, false, true).SetUpdate(true);
+            //Camera.main.transform.DOComplete();
+            //Camera.main.transform.DOShakePosition(.2f, .01f, 10, 90, false, true).SetUpdate(true);
 
         }
     }
@@ -52,6 +50,6 @@ public class s_GunSystem : MonoBehaviour
         {
             bulletHolder = 0;
         }
-        bulletGui.text = bulletHolder.ToString();
+        bulletGui.GetComponent<Text>().text = bulletHolder.ToString();
     }
 }
