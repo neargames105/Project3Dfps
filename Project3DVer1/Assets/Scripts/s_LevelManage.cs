@@ -13,12 +13,12 @@ public class s_LevelManage : MonoBehaviour
     [SerializeField] private GameObject Player;
 
     [SerializeField] private int LevelIndex;
-    [SerializeField] private GameObject[] LevelScene;
+    //[SerializeField] private GameObject[] LevelScene;
     private void Awake()
     {
         LevelIndex = PlayerPrefs.GetInt("LevelIndex", 0);
-        LevelIndex = Mathf.Clamp(LevelIndex, 0, LevelScene.Length-1);
-        Instantiate(LevelScene[LevelIndex]);
+        LevelIndex = Mathf.Clamp(LevelIndex, 0, SceneManager.sceneCountInBuildSettings-1);
+        //Instantiate(LevelScene[LevelIndex]);
     }
     void Start()
     {
@@ -43,10 +43,11 @@ public class s_LevelManage : MonoBehaviour
     public void OnNextLevel()
     {
         LevelIndex += 1;
+        LevelIndex = Mathf.Clamp(LevelIndex, 0, SceneManager.sceneCountInBuildSettings - 1);
         PlayerPrefs.SetInt("LevelIndex", LevelIndex);
     }
     public void OnLoadLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(LevelIndex);
     }
 }
