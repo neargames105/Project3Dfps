@@ -64,12 +64,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Enemys\s_Enemy.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\s_Bullet.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\s_GunSystem.cs" />
     <Compile Include="Assets\Scripts\GameUi\s_MenuManage.cs" />
-    <Compile Include="Assets\Scripts\s_Bullet.cs" />
-    <Compile Include="Assets\Scripts\s_Enemy.cs" />
-    <Compile Include="Assets\Scripts\s_GunSystem.cs" />
-    <Compile Include="Assets\Scripts\s_LevelManage.cs" />
-    <Compile Include="Assets\Scripts\s_PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\GameUi\s_Transition.cs" />
+    <Compile Include="Assets\Scripts\Levels\s_LevelManage.cs" />
+    <Compile Include="Assets\Scripts\Player\s_PlayerMovement.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>E:/UnityProJ/Project3Dfps/Project3DVer1/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
