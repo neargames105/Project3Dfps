@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7749307973705136709}
   - component: {fileID: 7749307973705136708}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PossPro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
