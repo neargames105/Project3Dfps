@@ -3,12 +3,12 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 
-public class s_MenuManage : s_Transition
+public class s_MenuManage : MonoBehaviour
 {
     public void PlayGame()
     {
         //Start Transition Animation When Click Button Play and Go to Level[Level Index]
-        StartTrans();
+        s_Transition.Instance.StartTrans();
         StartCoroutine(LoadLevel());
     }
     IEnumerator LoadLevel()

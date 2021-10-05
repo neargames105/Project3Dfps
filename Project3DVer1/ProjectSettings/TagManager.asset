@@ -9,6 +9,7 @@ TagManager:
   - BulletGui
   - LevelCompleteTag
   - PanelTrans
+  - LevelGameOver
   layers:
   - Default
   - TransparentFX

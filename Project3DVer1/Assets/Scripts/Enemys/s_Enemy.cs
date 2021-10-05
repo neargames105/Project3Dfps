@@ -9,7 +9,6 @@ public class s_Enemy : MonoBehaviour
     [SerializeField] private GameObject bullet;
     [SerializeField] private Transform gun;
     [SerializeField] private float delay, delayOrigin;
-
     [SerializeField] private GameObject deadEffect;
     void Start()
     {
@@ -21,13 +20,16 @@ public class s_Enemy : MonoBehaviour
     {
         transform.LookAt(player.transform.position);
         //shot
-        if (Time.timeScale == 1f)
+        if (Time.timeScale > 0.05f)
         {
-            delay--;
             if (delay <=0)
             {
                 Fire();
                 delay = delayOrigin;
+            }
+            else
+            {
+                delay--;
             }
         }
     }
@@ -37,16 +39,15 @@ public class s_Enemy : MonoBehaviour
         newBullet.transform.localPosition = gun.position;
         newBullet.transform.localRotation = gun.rotation;
     }
-    public void dead()
+    public void Dead()
     {
-        GameObject DeadEffect = Instantiate(deadEffect);
-        DeadEffect.transform.position = transform.position;
+        Instantiate(deadEffect);
+        deadEffect.transform.position = transform.position;
         deadEffect.transform.rotation = transform.rotation;
         //
         EnemyCountToLevel();
         //
         Destroy(gameObject);
-        Destroy(DeadEffect, 2f);
         
     }
     void EnemyCountToLevel()

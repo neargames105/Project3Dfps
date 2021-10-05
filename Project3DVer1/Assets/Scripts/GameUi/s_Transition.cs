@@ -5,10 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class s_Transition : MonoBehaviour
 {
-    #region TransObject
     private GameObject PanelTrans;
     private GameObject Player;
-    #endregion
+    public static s_Transition Instance;
     private void Awake()
     {
         PanelTrans = GameObject.FindGameObjectWithTag("PanelTrans");
@@ -16,6 +15,7 @@ public class s_Transition : MonoBehaviour
     }
     private void Start()
     {
+        Instance = this;
         if (Player != null)
         {
             CloseTrans();

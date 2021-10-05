@@ -14,13 +14,16 @@ public class s_Bullet : MonoBehaviour
     {
         if (collision.collider.tag == "Enemy")
         {
-            collision.transform.GetComponent<s_Enemy>().dead();
+            collision.transform.GetComponent<s_Enemy>().Dead();
             Destroy(gameObject);
-            
-
         }
         else if (collision.collider.tag == "Wall")
         {
+            Destroy(gameObject);
+        }
+        else if (collision.collider.tag == "Player")
+        {
+            s_LevelManage.Instance.GameOver();
             Destroy(gameObject);
         }
     }

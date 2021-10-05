@@ -12,6 +12,8 @@ public class s_PlayerMovement : MonoBehaviour
     private float mouseX, mouseY;
     private float rotX, rotY;
     [SerializeField] private float MouseSensitive;
+
+    private bool action;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -24,6 +26,13 @@ public class s_PlayerMovement : MonoBehaviour
     private void Update()
     {
         MyInput();
+        //
+        if (Input.GetMouseButtonDown(0))
+        {
+            StopCoroutine(ActionE(.03f));
+            StartCoroutine(ActionE(.03f));
+        }
+        //
         TimeControl();
     }
     private void FixedUpdate()
@@ -48,7 +57,18 @@ public class s_PlayerMovement : MonoBehaviour
     private void TimeControl()
     {
         //time control
-        float time = (h != 0 || v != 0) ? 1f : 0.03f;
-        Time.timeScale = Mathf.Lerp(Time.timeScale, time, .5f);
+        float x = Input.GetAxisRaw("Horizontal");
+        float y = Input.GetAxisRaw("Vertical");
+        float time = (x != 0 || y != 0) ? 1f : .03f;
+        float lerpTime = (x != 0 || y != 0) ? .05f : .5f;
+        time = action ? 1 : time;
+        lerpTime = action ? .1f : lerpTime;
+        Time.timeScale = Mathf.Lerp(Time.timeScale, time, lerpTime);
+    }
+    IEnumerator ActionE(float time)
+    {
+        action = true;
+        yield return new WaitForSecondsRealtime(.06f);
+        action = false;
     }
 }
