@@ -52,6 +52,6 @@ public class s_Enemy : MonoBehaviour
     }
     void EnemyCountToLevel()
     {
-        s_LevelManage.EnemyCount -= 1;
+        s_LevelManage.Instance.EnemyCount -= 1;
     }
 }

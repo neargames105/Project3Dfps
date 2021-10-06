@@ -6,8 +6,7 @@ using UnityEngine.SceneManagement;
 public class s_LevelManage : MonoBehaviour
 {
     #region LevelManage
-    public static int EnemyCount;
-    [SerializeField] private int EnemyCountShow;
+    public int EnemyCount;
     [SerializeField] private int LevelIndex;
     #endregion
     #region LevelComplete
@@ -33,9 +32,6 @@ public class s_LevelManage : MonoBehaviour
     {
         //
         Instance = this;
-        //Config Enemy In Level
-        EnemyCount = EnemyCountShow;
-
     }
     void Update()
     {
@@ -45,6 +41,7 @@ public class s_LevelManage : MonoBehaviour
             panelComplete.SetActive(true);
             MouseEnable();
             Player.GetComponent<s_PlayerMovement>().enabled = false;
+            Player.GetComponent<s_GunSystem>().enabled = false;
         }
     }
     public void OnNextLevel()
@@ -69,6 +66,7 @@ public class s_LevelManage : MonoBehaviour
         panelGameOver.SetActive(true);
         MouseEnable();
         Player.GetComponent<s_PlayerMovement>().enabled = false;
+        Player.GetComponent<s_GunSystem>().enabled = false;
     }
 
 

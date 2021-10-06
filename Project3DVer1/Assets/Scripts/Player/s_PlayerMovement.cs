@@ -29,8 +29,8 @@ public class s_PlayerMovement : MonoBehaviour
         //
         if (Input.GetMouseButtonDown(0))
         {
-            StopCoroutine(ActionE(.03f));
-            StartCoroutine(ActionE(.03f));
+            StopCoroutine(ActionE(.06f));
+            StartCoroutine(ActionE(.06f));
         }
         //
         TimeControl();
@@ -68,7 +68,7 @@ public class s_PlayerMovement : MonoBehaviour
     IEnumerator ActionE(float time)
     {
         action = true;
-        yield return new WaitForSecondsRealtime(.06f);
+        yield return new WaitForSecondsRealtime(time);
         action = false;
     }
 }
