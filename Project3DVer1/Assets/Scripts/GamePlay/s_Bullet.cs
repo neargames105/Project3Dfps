@@ -1,27 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿using UnityEngine;
 public class s_Bullet : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private float bulletSpeed;
-    void Update()
+    private void Update()
     {
-        transform.position += transform.forward * bulletSpeed * Time.deltaTime;
+        transform.position += bulletSpeed * Time.deltaTime * transform.forward;
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.tag == "Enemy")
+        if (collision.collider.CompareTag("Enemy"))
         {
-            collision.transform.GetComponent<s_Enemy>().Dead();
+            collision.transform.GetComponent<Enemy>().Dead();
             Destroy(gameObject);
         }
-        else if (collision.collider.tag == "Wall")
+        else if (collision.collider.CompareTag("Wall"))
         {
             Destroy(gameObject);
         }
-        else if (collision.collider.tag == "Player")
+        else if (collision.collider.CompareTag("Player"))
         {
             s_LevelManage.Instance.GameOver();
             Destroy(gameObject);

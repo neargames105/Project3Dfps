@@ -55,13 +55,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Enemys\s_Enemy.cs" />
+     <Compile Include="Assets\Scripts\Enemys\Enemy.cs" />
+     <Compile Include="Assets\Scripts\GamePlay\GunSystem.cs" />
      <Compile Include="Assets\Scripts\GamePlay\s_Bullet.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\s_GunSystem.cs" />
      <Compile Include="Assets\Scripts\GameUi\s_MenuManage.cs" />
      <Compile Include="Assets\Scripts\GameUi\s_Transition.cs" />
      <Compile Include="Assets\Scripts\Levels\s_LevelManage.cs" />
+     <Compile Include="Assets\Scripts\PickUpControl.cs" />
      <Compile Include="Assets\Scripts\Player\s_PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\Singleton.cs" />
+     <Compile Include="Assets\Scripts\s_GameCore.cs" />
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.30f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>

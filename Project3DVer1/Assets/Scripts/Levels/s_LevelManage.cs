@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class s_LevelManage : MonoBehaviour
+public class s_LevelManage : Singleton<s_LevelManage>
 {
     #region LevelManage
     public int EnemyCount;
@@ -13,36 +13,26 @@ public class s_LevelManage : MonoBehaviour
     private GameObject panelComplete;
     private GameObject panelGameOver;
     private GameObject Player;
+    //
+    [HideInInspector] public bool canAction;
     #endregion
-
-    public static s_LevelManage Instance;
     private void Awake()
     {
         //find objects have tag
         Player = GameObject.FindGameObjectWithTag("Player");
         panelComplete = GameObject.FindGameObjectWithTag("LevelCompleteTag");
         panelGameOver = GameObject.FindGameObjectWithTag("LevelGameOver");
-        panelComplete.SetActive(false);
-        panelGameOver.SetActive(false);
-        // get level index and clamp value
-        LevelIndex = PlayerPrefs.GetInt("LevelIndex", 0);
-        LevelIndex = Mathf.Clamp(LevelIndex, 0, SceneManager.sceneCountInBuildSettings-1);
     }
     void Start()
     {
         //
-        Instance = this;
-    }
-    void Update()
-    {
-        if (EnemyCount <=0)
-        {
-            //Enable Win Panel and Disable Player
-            panelComplete.SetActive(true);
-            MouseEnable();
-            Player.GetComponent<s_PlayerMovement>().enabled = false;
-            Player.GetComponent<s_GunSystem>().enabled = false;
-        }
+        canAction = true;
+        // get level index and clamp value
+        LevelIndex = PlayerPrefs.GetInt("LevelIndex", 0);
+        LevelIndex = Mathf.Clamp(LevelIndex, 0, SceneManager.sceneCountInBuildSettings - 1);
+        //
+        panelComplete.SetActive(false);
+        panelGameOver.SetActive(false);
     }
     public void OnNextLevel()
     {
@@ -54,6 +44,7 @@ public class s_LevelManage : MonoBehaviour
     }
     public void OnReloadLevel()
     {
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     public void MouseEnable()
@@ -63,13 +54,31 @@ public class s_LevelManage : MonoBehaviour
     }
     public void GameOver()
     {
+        canAction = false;
         panelGameOver.SetActive(true);
         MouseEnable();
         Player.GetComponent<s_PlayerMovement>().enabled = false;
-        Player.GetComponent<s_GunSystem>().enabled = false;
+    }
+    public void GameWin()
+    {
+        //
+        canAction = false;
+        //Enable Win Panel and Disable Player
+        Player.GetComponent<s_PlayerMovement>().enabled = false;
+        panelComplete.SetActive(true);
+        MouseEnable();
+        Debug.Log("gamewin");
+    }
+    public void EnemyCountToLevel()
+    {
+        EnemyCount -= 1;
+        if (EnemyCount <= 0)
+        {
+            GameWin();
+        }
     }
 
 
 
-    
+
 }
