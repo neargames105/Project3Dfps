@@ -23,7 +23,7 @@ public class s_LevelManage : Singleton<s_LevelManage>
         panelComplete = GameObject.FindGameObjectWithTag("LevelCompleteTag");
         panelGameOver = GameObject.FindGameObjectWithTag("LevelGameOver");
     }
-    void Start()
+    private void Start()
     {
         //
         canAction = true;
@@ -36,6 +36,7 @@ public class s_LevelManage : Singleton<s_LevelManage>
     }
     public void OnNextLevel()
     {
+        Time.timeScale = 1;
         //Next Level Config
         LevelIndex += 1;
         LevelIndex = Mathf.Clamp(LevelIndex, 0, SceneManager.sceneCountInBuildSettings - 1);
@@ -44,7 +45,7 @@ public class s_LevelManage : Singleton<s_LevelManage>
     }
     public void OnReloadLevel()
     {
-
+        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     public void MouseEnable()

@@ -4,65 +4,78 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 
-public class GunSystem : s_GameCore
+public class GunSystem : MonoBehaviour
 {
-    // Start is called before the first frame update
     [SerializeField] private GameObject bullet;
-    [SerializeField] private Transform gunTrans;
-    //gun setting
-    #region Gun Setting
     [SerializeField] private int bulletHolder;
-    private int bulletHolderMax;
-    private GameObject bulletGui;
-    #endregion
-    private void Awake()
+    //gun
+    Rigidbody rb;
+    [SerializeField] private float throwForced;
+    private Animator anim;
+    public void Awake()
     {
-        cam = Camera.main;
-        bulletGui = GameObject.FindGameObjectWithTag("BulletGui");
+        rb = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
     }
-    void Start()
+    private void Update()
     {
-        bulletHolderMax = bulletHolder;
-        GunSetting();
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        if (transform.parent != null)
+        if (Input.GetMouseButtonDown(0))
         {
-            if (Input.GetMouseButtonDown(0)&& s_LevelManage.Instance.canAction)
-            {
-                //fire
-                Fire();
-                bulletHolder--;
-                GunSetting();
-            }
-            
-        }   
+            anim.SetBool("isRecoil" , true);
+        }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            anim.SetBool("isRecoil", false);
+        }
     }
-    void Fire()
+
+    public void Start()
+    {
+        //
+        if (transform.parent)
+        {
+            s_GameCore.Instance.gunSystem = this;
+        }
+    }
+    public void Fire(Vector3 pos , Quaternion rot)
     {
         if (bulletHolder <=0)
         {
-            Debug.Log("No Bullet");
             return;
         }
         //
         GameObject newBullet = Instantiate(bullet);
-        newBullet.transform.localPosition = gunTrans.position;
-        newBullet.transform.localRotation = gunTrans.rotation;
-        //newBullet.transform.localPosition = cam.transform.position + new Vector3(0, 0, 1.42f);
-        //newBullet.transform.localRotation = cam.transform.rotation;
+        newBullet.transform.localPosition = pos;
+        newBullet.transform.localRotation = rot;
         bulletHolder -= 1;
         //shake camera when shot
         Camera.main.transform.DOComplete();
         Camera.main.transform.DOShakePosition(.8f, .04f, 10, 90, false, true).SetUpdate(true);
-
     }
-    void GunSetting()
+    public void ThrowWeapon(Vector3 direction)
     {
-        bulletHolder = Mathf.Clamp(bulletHolder, 0, bulletHolderMax);
-        bulletGui.GetComponent<Text>().text = bulletHolder.ToString();
+        
+        rb.isKinematic = false;
+        rb.AddForce(direction * throwForced, ForceMode.Impulse);
+        var random = Random.Range(-1f, 1f);
+        rb.AddTorque(new Vector3(random, random, random) * 10f);
     }
+    public void PickUpWeapon()
+    {
+        transform.parent = s_GameCore.Instance.gunHolder;
+        rb.isKinematic = true;
+        //
+        transform.DOLocalMove(Vector3.zero, .25f).SetEase(Ease.OutBack).SetUpdate(true);
+        transform.DOLocalRotate(Vector3.zero, .25f).SetUpdate(true);
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.CompareTag("Enemy"))
+        {
+            collision.transform.GetComponent<Enemy>().Dead();
+            Destroy(gameObject);
+        }
+    }
+
 
 }

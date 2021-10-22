@@ -1,21 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class s_PlayerMovement : s_GameCore
+public class s_PlayerMovement : MonoBehaviour
 {
     private Rigidbody rb;
+    private Camera cam;
     private Vector3 direction;
     [SerializeField] private float playerSpeed;
     //Camera setting
     private float mouseX, mouseY;
     private float rotX, rotY;
     [SerializeField] private float MouseSensitive;
-    
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         cam = Camera.main;
-
     }
     private void Start()
     {
@@ -26,14 +25,7 @@ public class s_PlayerMovement : s_GameCore
     private void Update()
     {
         MyInput();
-        //
-        if (Input.GetMouseButtonDown(0))
-        {
-            StopCoroutine(ActionE(.06f));
-            StartCoroutine(ActionE(.06f));
-        }
-        //
-        TimeControl();
+        s_GameCore.Instance.TimeControl();
     }
     private void FixedUpdate()
     {

@@ -1,63 +1,52 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
-public class PickUpControl : s_GameCore
+public class PickUpControl : MonoBehaviour
 {
-    public Transform Player;
+    private Camera cam;
     public Transform GunHold;
     private Rigidbody rb;
-    public float zForce;
-    private float startTime;
-    private float journeyLength;
-    private bool callGun;
+    public float speed;
+    //
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         cam = Camera.main;
     }
+    private void Start()
+    {
+        rb.isKinematic = true;
+        rb.useGravity = true;
+    }
     private void Update()
     {
-        Vector3 distanceToPlayer = Player.position - transform.position;
-        if (distanceToPlayer.magnitude <= 20f && Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && transform.parent == null)
         {
             PickUpWeapon();
-            StopCoroutine(ActionE(.6f));
-            StartCoroutine(ActionE(.6f));
-
         }
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && transform.parent != null)
         {
             ThrowWeapon();
-            StopCoroutine(ActionE(.06f));
-            StartCoroutine(ActionE(.06f));
-        }
-        if (callGun)
-        {
-            var disCovered = (Time.time - startTime) * zForce;
-            var fractionOfJourney = disCovered / journeyLength;
-            transform.localPosition = Vector3.Lerp(transform.localPosition, Vector3.zero, fractionOfJourney);
         }
     }
     public void ThrowWeapon()
     {
-        callGun = false;
         transform.parent = null;
         rb.isKinematic = false;
-        rb.AddForce(cam.transform.forward * zForce, ForceMode.Impulse);
+        rb.AddForce(cam.transform.forward * speed, ForceMode.Impulse);
         var random = Random.Range(-1f, 1f);
-        rb.AddTorque(new Vector3(random, random, random));
+        rb.AddTorque(new Vector3(random, random, random)*10f);
     }
     public void PickUpWeapon()
     {
-        callGun = true;
-        //
-        startTime = Time.time;
-        journeyLength = Vector3.Distance(transform.position, Player.position);
-        //
+        GunHold = cam.transform.Find("GunHolder");
         transform.SetParent(GunHold);
-        transform.localRotation = Quaternion.Euler(Vector3.zero);
         rb.isKinematic = true;
+        //
+        transform.DOLocalMove(Vector3.zero, .25f).SetEase(Ease.OutBack).SetUpdate(true);
+        transform.DOLocalRotate(Vector3.zero, .25f).SetUpdate(true);
 
     }
     private void OnCollisionEnter(Collision collision)
@@ -65,6 +54,7 @@ public class PickUpControl : s_GameCore
         if (collision.transform.CompareTag("Enemy"))
         {
             collision.transform.GetComponent<Enemy>().Dead();
+            Destroy(gameObject);
         }
     }
 
