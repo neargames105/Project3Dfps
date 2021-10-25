@@ -62,9 +62,11 @@
     <Compile Include="Assets\EffectExamples\Shared\Scripts\ParticleMenu.cs" />
     <Compile Include="Assets\EffectExamples\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\Scripts\Enemys\Enemy.cs" />
+    <Compile Include="Assets\Scripts\Enemys\EnemyVer1.cs" />
     <Compile Include="Assets\Scripts\GamePlay\BulletEnemy.cs" />
     <Compile Include="Assets\Scripts\GamePlay\GunSystem.cs" />
     <Compile Include="Assets\Scripts\GamePlay\InteractiveItem.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\ItemBase.cs" />
     <Compile Include="Assets\Scripts\GamePlay\s_Bullet.cs" />
     <Compile Include="Assets\Scripts\GamePlay\s_GameCore.cs" />
     <Compile Include="Assets\Scripts\GameUi\s_MenuManage.cs" />

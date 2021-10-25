@@ -4,48 +4,27 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     // Start is called before the first frame update
-    private GameObject player;
-    public GameObject gunDrop;
-    public bool canDropGun;
+    [HideInInspector] public GameObject player;
+    [SerializeField] private GameObject gunDrop;
     [SerializeField] private GameObject bullet;
-    private Transform gun;
-    [SerializeField] private float delay;
-    private float delayOrigin;
     [SerializeField] private GameObject deadEffect;
-    private void Awake()
+    //action setting
+    [Space(20)]
+    public float delay;
+    [HideInInspector] public float delayOrigin;
+    private Transform gun;
+    public bool canDropGun;
+    public void Awake()
     {
         gun = transform.Find("Gun");
         player = GameObject.FindGameObjectWithTag("Player");
     }
-    
-    private void Start()
+    public void Start()
     {
         delayOrigin = delay;
     }
-
-    // Update is called once per frame
-    private void Update()
+    public void Fire()
     {
-        transform.LookAt(player.transform.position);
-        //shot
-        if (Time.timeScale > 0.05f)
-        {
-            if (delay <=0)
-            {
-                Fire();
-                delay = delayOrigin;
-            }
-            else
-            {
-                delay--;
-            }
-        }
-    }
-    void Fire()
-    {
-        //
-        var random = Random.Range(-1f, 1f);
-        //
         GameObject newBullet = Instantiate(bullet);
         newBullet.transform.localPosition = gun.position;
         newBullet.transform.localRotation = gun.rotation;

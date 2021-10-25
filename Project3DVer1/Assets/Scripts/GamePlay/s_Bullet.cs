@@ -3,7 +3,7 @@ public class s_Bullet : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private float bulletSpeed;
-    public GameObject _destroyFX;
+    [SerializeField] private GameObject _destroyFX;
     private void Update()
     {
         transform.position += bulletSpeed * Time.deltaTime * transform.forward;
@@ -20,8 +20,7 @@ public class s_Bullet : MonoBehaviour
             GameObject destroyFX = Instantiate(_destroyFX);
             destroyFX.transform.position = transform.position;
             Destroy(destroyFX, 1f);
-            Destroy(gameObject);
-            
+            Destroy(gameObject); 
         }
         else if (collision.collider.CompareTag("Player"))
         {

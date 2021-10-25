@@ -1,23 +1,16 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
-using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
-
-public class GunSystem : MonoBehaviour
+public class GunSystem : ItemBase
 {
     [SerializeField] private GameObject bullet;
     [SerializeField] private int bulletHolder;
-    //gun
-    Rigidbody rb;
-    [SerializeField] private float throwForced;
     private Animator anim;
-    public void Awake()
+    public override void Awake()
     {
-        rb = GetComponent<Rigidbody>();
+        base.Awake();
         anim = GetComponent<Animator>();
     }
-    private void Update()
+    public void Update()
     {
         if (Input.GetMouseButtonDown(0) && transform.parent)
         {
@@ -28,10 +21,11 @@ public class GunSystem : MonoBehaviour
             anim.SetBool("isRecoil", false);
         }
     }
-
-    public void Start()
+    public override void Start()
     {
         //
+        base.Start();
+        //set gun in the firstime
         if (transform.parent)
         {
             s_GameCore.Instance.gunSystem = this;
@@ -41,10 +35,10 @@ public class GunSystem : MonoBehaviour
     {
         if (bulletHolder <=0)
         {
-            ThrowWeapon(Camera.main.transform.forward);
+            ThrowItem(Camera.main.transform.forward);
             return;
         }
-        //
+        //instance a bullet 
         GameObject newBullet = Instantiate(bullet);
         newBullet.transform.localPosition = pos;
         newBullet.transform.localRotation = rot;
@@ -53,37 +47,10 @@ public class GunSystem : MonoBehaviour
         Camera.main.transform.DOComplete();
         Camera.main.transform.DOShakePosition(.8f, .04f, 10, 90, false, true).SetUpdate(true);
     }
-    public void ThrowWeapon(Vector3 direction)
+    public override void PickUpItem()
     {
-        //
-        s_GameCore.Instance.gunSystem = null;
-        //
-        transform.parent = null;
-        rb.isKinematic = false;
-        rb.AddForce(direction * throwForced, ForceMode.Impulse);
-        var random = Random.Range(-1f, 1f);
-        rb.AddTorque(new Vector3(random, random, random) * 10f);
-    }
-    public void PickUpWeapon()
-    {
-        Debug.Log("pick");
-        //
+        base.PickUpItem();
         s_GameCore.Instance.gunSystem = this;
-        //
         transform.parent = s_GameCore.Instance.itemHolder;
-        rb.isKinematic = true;
-        //
-        transform.DOLocalMove(Vector3.zero, .25f).SetEase(Ease.OutBack).SetUpdate(true);
-        transform.DOLocalRotate(Vector3.zero, .25f).SetUpdate(true);
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.transform.CompareTag("Enemy"))
-        {
-            collision.transform.GetComponent<Enemy>().Dead();
-            Destroy(gameObject);
-        }
-    }
-
-
 }

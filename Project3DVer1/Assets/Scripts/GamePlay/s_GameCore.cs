@@ -49,7 +49,7 @@ public class s_GameCore : Singleton<s_GameCore>
             //gun if gunsystem or item if interactiveitem
             if (Input.GetKeyDown(KeyCode.E) && gunSystem == null && item ==null)
             {
-                hit.transform.GetComponent<GunSystem>().PickUpWeapon();
+                hit.transform.GetComponent<GunSystem>().PickUpItem();
                 textPickUp.SetActive(false);
             }
         }
