@@ -61,17 +61,17 @@
     <Compile Include="Assets\EffectExamples\Shared\Scripts\ParticleExamples.cs" />
     <Compile Include="Assets\EffectExamples\Shared\Scripts\ParticleMenu.cs" />
     <Compile Include="Assets\EffectExamples\TutorialInfo\Scripts\Readme.cs" />
-    <Compile Include="Assets\Scripts\BulletEnemy.cs" />
     <Compile Include="Assets\Scripts\Enemys\Enemy.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\BulletEnemy.cs" />
     <Compile Include="Assets\Scripts\GamePlay\GunSystem.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\InteractiveItem.cs" />
     <Compile Include="Assets\Scripts\GamePlay\s_Bullet.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\s_GameCore.cs" />
     <Compile Include="Assets\Scripts\GameUi\s_MenuManage.cs" />
     <Compile Include="Assets\Scripts\GameUi\s_Transition.cs" />
+    <Compile Include="Assets\Scripts\Levels\Singleton.cs" />
     <Compile Include="Assets\Scripts\Levels\s_LevelManage.cs" />
-    <Compile Include="Assets\Scripts\PickUpControl.cs" />
     <Compile Include="Assets\Scripts\Player\s_PlayerMovement.cs" />
-    <Compile Include="Assets\Scripts\Singleton.cs" />
-    <Compile Include="Assets\Scripts\s_GameCore.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\EffectExamples\Shared\Shaders\SurfaceShader_VC.shader" />

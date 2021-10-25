@@ -99,10 +99,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunDrop: {fileID: 3525544658928050723, guid: 27e8c30c754d03648b03f2b30af3f6b4, type: 3}
-  canDropGun: 0
+  canDropGun: 1
   bullet: {fileID: 7424644095791988053, guid: a2d66de428611be42bc16989a645c08b, type: 3}
   delay: 180
-  deadEffect: {fileID: 1000013462590818, guid: ecdd96beb7f93494880c052dfccf9dc1, type: 3}
+  deadEffect: {fileID: 660627705430673868, guid: b00c8a8036fc62d42b5b64c3484c214c,
+    type: 3}
 --- !u!1001 &2028062912815782377
 PrefabInstance:
   m_ObjectHideFlags: 0

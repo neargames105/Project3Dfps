@@ -19,11 +19,11 @@ public class GunSystem : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && transform.parent)
         {
             anim.SetBool("isRecoil" , true);
         }
-        else if (Input.GetMouseButtonUp(0))
+        else if (Input.GetMouseButtonUp(0) && transform.parent)
         {
             anim.SetBool("isRecoil", false);
         }
@@ -41,6 +41,7 @@ public class GunSystem : MonoBehaviour
     {
         if (bulletHolder <=0)
         {
+            ThrowWeapon(Camera.main.transform.forward);
             return;
         }
         //
@@ -54,7 +55,10 @@ public class GunSystem : MonoBehaviour
     }
     public void ThrowWeapon(Vector3 direction)
     {
-        
+        //
+        s_GameCore.Instance.gunSystem = null;
+        //
+        transform.parent = null;
         rb.isKinematic = false;
         rb.AddForce(direction * throwForced, ForceMode.Impulse);
         var random = Random.Range(-1f, 1f);
@@ -62,7 +66,11 @@ public class GunSystem : MonoBehaviour
     }
     public void PickUpWeapon()
     {
-        transform.parent = s_GameCore.Instance.gunHolder;
+        Debug.Log("pick");
+        //
+        s_GameCore.Instance.gunSystem = this;
+        //
+        transform.parent = s_GameCore.Instance.itemHolder;
         rb.isKinematic = true;
         //
         transform.DOLocalMove(Vector3.zero, .25f).SetEase(Ease.OutBack).SetUpdate(true);

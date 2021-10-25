@@ -92,7 +92,8 @@ GameObject:
   - component: {fileID: 1676542051916769781}
   - component: {fileID: 1676542051916769778}
   - component: {fileID: 3525544658928050720}
-  m_Layer: 0
+  - component: {fileID: 29913988}
+  m_Layer: 9
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,6 +157,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 7424644095791988053, guid: b4b5c80142e57f247980a07c184274cc, type: 3}
-  bulletHolder: 100
+  bulletHolder: 5
   throwForced: 50
-  upRecoil: {x: 60, y: 0, z: 0}
+--- !u!95 &29913988
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3525544658928050723}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 46a6267f4a0647e4ea30c0b860e5f639, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
