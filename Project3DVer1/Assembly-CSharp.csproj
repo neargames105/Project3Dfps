@@ -8,7 +8,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{AA953154-89FB-E521-2DE1-1647354CB994}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -69,8 +70,9 @@
     <Compile Include="Assets\Scripts\GamePlay\ItemBase.cs" />
     <Compile Include="Assets\Scripts\GamePlay\s_Bullet.cs" />
     <Compile Include="Assets\Scripts\GamePlay\s_GameCore.cs" />
-    <Compile Include="Assets\Scripts\GameUi\s_MenuManage.cs" />
-    <Compile Include="Assets\Scripts\GameUi\s_Transition.cs" />
+    <Compile Include="Assets\Scripts\GameUi\MenuManage.cs" />
+    <Compile Include="Assets\Scripts\GameUi\UIManager.cs" />
+    <Compile Include="Assets\Scripts\GameUi\Transition.cs" />
     <Compile Include="Assets\Scripts\Levels\Singleton.cs" />
     <Compile Include="Assets\Scripts\Levels\s_LevelManage.cs" />
     <Compile Include="Assets\Scripts\Player\s_PlayerMovement.cs" />

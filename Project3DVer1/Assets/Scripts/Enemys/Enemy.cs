@@ -34,7 +34,9 @@ public class Enemy : MonoBehaviour
         GameObject DeadEffect = Instantiate(deadEffect);
         DeadEffect.transform.position = this.transform.position;
         DeadEffect.transform.rotation = this.transform.rotation;
+        //
         s_LevelManage.Instance.EnemyCountToLevel();
+        //
         if (canDropGun)
         {
             DropGunWhenDead();

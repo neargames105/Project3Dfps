@@ -7,7 +7,7 @@ public class EnemyVer1 : Enemy
     public void Update()
     {
         transform.LookAt(player.transform.position);
-        //shot
+        //shoot
         if (Time.timeScale > 0.05f)
         {
             if (delay <= 0)
