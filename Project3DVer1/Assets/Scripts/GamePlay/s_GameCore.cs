@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.Rendering.PostProcessing;
+
+
 public class s_GameCore : Singleton<s_GameCore>
 {
     // Start is called before the first frame update
@@ -87,5 +90,10 @@ public class s_GameCore : Singleton<s_GameCore>
         action = true;
         yield return new WaitForSecondsRealtime(time);
         action = false;
+    }
+
+    public void GameFeel()
+    {
+        
     }
 }

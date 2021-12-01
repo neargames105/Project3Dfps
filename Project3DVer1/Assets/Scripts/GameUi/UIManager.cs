@@ -8,19 +8,11 @@ public class UIManager : Singleton<UIManager>
 {
     //
     [SerializeField] private int LevelIndex;
-    //
-    public Button buttonNext;
-    public Button buttonReload;
-    //
+
     public GameObject panelComplete;
     public GameObject panelGameOver;
     //
     private const string LEVEL_INDEX = "LEVEL_INDEX";
-    private void Awake()
-    {
-        buttonNext.onClick.AddListener(OnNextLevel);
-        buttonReload.onClick.AddListener(OnReloadLevel);
-    }
     private void Start()
     {
         // get level index and clamp value
@@ -28,6 +20,9 @@ public class UIManager : Singleton<UIManager>
         //
         panelComplete.SetActive(false);
         panelGameOver.SetActive(false);
+
+        //
+        Debug.Log(SceneManager.sceneCountInBuildSettings);
     }
     public void OnNextLevel()
     {
@@ -36,12 +31,10 @@ public class UIManager : Singleton<UIManager>
         LevelIndex += 1;
         LevelIndex = Mathf.Clamp(LevelIndex, 0, SceneManager.sceneCountInBuildSettings - 1);
         PlayerPrefs.SetInt(LEVEL_INDEX, LevelIndex);
-        SceneManager.LoadScene(LevelIndex);
     }
 
     public void OnReloadLevel()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

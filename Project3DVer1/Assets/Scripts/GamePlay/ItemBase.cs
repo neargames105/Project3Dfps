@@ -7,6 +7,8 @@ public class ItemBase : MonoBehaviour
 {
     [HideInInspector] public Rigidbody rb;
     public float throwForced;
+
+    public GameObject destroyPs;
     public virtual void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -40,6 +42,16 @@ public class ItemBase : MonoBehaviour
         {
             collision.transform.GetComponent<Enemy>().Dead();
             Destroy(gameObject);
+        }
+        if (collision.transform.CompareTag("Wall"))
+        {
+            if (Mathf.Abs(rb.velocity.z) > 1f)
+            {
+                Destroy(gameObject);
+                GameObject g = Instantiate(destroyPs, transform.position, transform.rotation);
+                Destroy(g, 2f);
+            }
+            
         }
     }
 }

@@ -25,7 +25,11 @@ public class s_PlayerMovement : MonoBehaviour
     private void Update()
     {
         MyInput();
-        s_GameCore.Instance.TimeControl();
+        if (rb.velocity.y <= 0.1f)
+        {
+            s_GameCore.Instance.TimeControl();
+        }
+        //s_GameCore.Instance.TimeControl();
     }
     private void FixedUpdate()
     {

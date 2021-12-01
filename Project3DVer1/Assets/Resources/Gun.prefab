@@ -156,9 +156,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edf9ed602d997da4083417778b9ac1a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  throwForced: 50
+  destroyPs: {fileID: 1000013462590818, guid: ecdd96beb7f93494880c052dfccf9dc1, type: 3}
   bullet: {fileID: 7424644095791988053, guid: b4b5c80142e57f247980a07c184274cc, type: 3}
   bulletHolder: 5
-  throwForced: 50
 --- !u!95 &29913988
 Animator:
   serializedVersion: 3
