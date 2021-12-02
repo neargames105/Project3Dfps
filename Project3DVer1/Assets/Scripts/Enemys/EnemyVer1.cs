@@ -6,19 +6,15 @@ public class EnemyVer1 : Enemy
 {
     public void Update()
     {
-        transform.LookAt(player.transform.position);
-        //shoot
-        if (Time.timeScale > 0.05f)
+        if (delay<=0)
         {
-            if (delay <= 0)
-            {
-                Fire();
-                delay = delayOrigin;
-            }
-            else
-            {
-                delay--;
-            }
+            transform.LookAt(player.transform.position);
+            Fire();
+            delay = delayOrigin;
+        }
+        else
+        {
+            delay -= Time.deltaTime;
         }
     }
 }

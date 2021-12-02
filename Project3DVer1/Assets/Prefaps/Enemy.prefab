@@ -103,7 +103,7 @@ MonoBehaviour:
   bullet: {fileID: 7424644095791988053, guid: a2d66de428611be42bc16989a645c08b, type: 3}
   deadEffect: {fileID: 660627705430673868, guid: b00c8a8036fc62d42b5b64c3484c214c,
     type: 3}
-  delay: 180
+  delay: 1
   delayOrigin: 0
   canDropGun: 1
 --- !u!1001 &2028062912815782377

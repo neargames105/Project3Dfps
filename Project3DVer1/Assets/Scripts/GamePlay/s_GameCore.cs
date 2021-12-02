@@ -1,16 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-using UnityEngine.Rendering.PostProcessing;
-
-
 public class s_GameCore : Singleton<s_GameCore>
 {
     // Start is called before the first frame update
     [HideInInspector] public bool action;
     [HideInInspector] public Camera cam;
-
+    [Range(0.03f,0.06f)] public float actionTime;
     public GunSystem gunSystem;
     public Transform gunTrans;
     public Transform gunHolder;
@@ -27,25 +23,44 @@ public class s_GameCore : Singleton<s_GameCore>
     }
     public void Update()
     {
-        //TimeControl();
-        if (Input.GetMouseButtonDown(0) && s_LevelManage.Instance.canAction)
+        if (s_LevelManage.Instance.canAction)
         {
-            if (gunSystem)
+            if (Input.GetMouseButtonDown(0))
             {
-                gunSystem.Fire(gunTrans.position, gunTrans.rotation);
-                gunFlash.Play();
+                StopCoroutine(ActionE(actionTime));
+                StartCoroutine(ActionE(actionTime));
+
+                if (gunSystem)
+                {
+                    gunSystem.Fire(gunTrans.position, gunTrans.rotation);
+                    gunFlash.Play();
+                }
+                else if (item)
+                {
+                    item.ThrowItem(cam.transform.forward);
+                }     
             }
-            else if (item)
+
+            if (Input.GetMouseButtonDown(1))
             {
-                item.ThrowItem(cam.transform.forward);
+                StopCoroutine(ActionE(actionTime));
+                StartCoroutine(ActionE(actionTime));
+
+                if (gunSystem)
+                {
+                    gunSystem.ThrowItem(cam.transform.forward);
+                }
+                else if (item)
+                {
+                    item.ThrowItem(cam.transform.forward);
+                }
             }
-            
         }
         #region RaySetting
         //
         RaycastHit hit;
         //ray to gun
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 100, gun))
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 100, gun))
         {
             //if ray then active pickuptext
             textPickUp.SetActive(true);
@@ -57,7 +72,7 @@ public class s_GameCore : Singleton<s_GameCore>
             }
         }
         //ray to item
-        else if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 100, itemLayer))
+        else if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 100, itemLayer))
         {
             //if ray then active pickuptext
             textPickUp.SetActive(true);
@@ -90,10 +105,5 @@ public class s_GameCore : Singleton<s_GameCore>
         action = true;
         yield return new WaitForSecondsRealtime(time);
         action = false;
-    }
-
-    public void GameFeel()
-    {
-        
     }
 }

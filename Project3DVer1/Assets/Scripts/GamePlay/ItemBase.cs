@@ -45,7 +45,7 @@ public class ItemBase : MonoBehaviour
         }
         if (collision.transform.CompareTag("Wall"))
         {
-            if (Mathf.Abs(rb.velocity.z) > 1f)
+            if (Mathf.Abs(rb.velocity.z) > 0.5f)
             {
                 Destroy(gameObject);
                 GameObject g = Instantiate(destroyPs, transform.position, transform.rotation);

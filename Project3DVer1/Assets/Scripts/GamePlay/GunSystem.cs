@@ -4,12 +4,14 @@ public class GunSystem : ItemBase
 {
     [SerializeField] private GameObject bullet;
     [SerializeField] private int bulletHolder;
+
     private Animator anim;
     public override void Awake()
     {
         base.Awake();
         anim = GetComponent<Animator>();
     }
+    
     public void Update()
     {
         if (Input.GetMouseButtonDown(0) && transform.parent)
@@ -26,6 +28,7 @@ public class GunSystem : ItemBase
         //
         base.Start();
         //set gun in the firstime
+        //
         if (transform.parent)
         {
             s_GameCore.Instance.gunSystem = this;
