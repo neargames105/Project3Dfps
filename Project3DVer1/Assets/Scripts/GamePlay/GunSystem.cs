@@ -29,7 +29,7 @@ public class GunSystem : ItemBase
         base.Start();
         //set gun in the firstime
         //
-        if (transform.parent)
+        if (transform.parent != null)
         {
             s_GameCore.Instance.gunSystem = this;
         }
@@ -52,8 +52,10 @@ public class GunSystem : ItemBase
     }
     public override void PickUpItem()
     {
+        transform.parent = s_GameCore.Instance.gunHolder;
+
         base.PickUpItem();
         s_GameCore.Instance.gunSystem = this;
-        transform.parent = s_GameCore.Instance.itemHolder;
+        
     }
 }

@@ -40,6 +40,7 @@ public class ItemBase : MonoBehaviour
     {
         if (collision.transform.CompareTag("Enemy"))
         {
+            //Debug.Log("Trigger Enemy");
             collision.transform.GetComponent<Enemy>().Dead();
             Destroy(gameObject);
         }
@@ -52,6 +53,10 @@ public class ItemBase : MonoBehaviour
                 Destroy(g, 2f);
             }
             
+        }
+        if (collision.transform.CompareTag("Bullet"))
+        {
+            Destroy(gameObject);
         }
     }
 }

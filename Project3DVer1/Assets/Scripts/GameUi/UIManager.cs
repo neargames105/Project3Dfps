@@ -22,7 +22,7 @@ public class UIManager : Singleton<UIManager>
         panelGameOver.SetActive(false);
 
         //
-        Debug.Log(SceneManager.sceneCountInBuildSettings);
+        //Debug.Log(SceneManager.sceneCountInBuildSettings);
     }
     public void OnNextLevel()
     {

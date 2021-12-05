@@ -61,6 +61,7 @@
     <Compile Include="Assets\EffectExamples\Shared\Scripts\ParticleExamples.cs" />
     <Compile Include="Assets\EffectExamples\Shared\Scripts\ParticleMenu.cs" />
     <Compile Include="Assets\EffectExamples\TutorialInfo\Scripts\Readme.cs" />
+    <Compile Include="Assets\Scripts\BombProp.cs" />
     <Compile Include="Assets\Scripts\Enemys\Enemy.cs" />
     <Compile Include="Assets\Scripts\Enemys\EnemyVer1.cs" />
     <Compile Include="Assets\Scripts\GamePlay\BulletEnemy.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Assets\Scripts\GameUi\MenuManage.cs" />
     <Compile Include="Assets\Scripts\GameUi\Transition.cs" />
     <Compile Include="Assets\Scripts\GameUi\UIManager.cs" />
+    <Compile Include="Assets\Scripts\ItemCanBroke.cs" />
     <Compile Include="Assets\Scripts\Levels\Singleton.cs" />
     <Compile Include="Assets\Scripts\Levels\s_LevelManage.cs" />
     <Compile Include="Assets\Scripts\Player\s_PlayerMovement.cs" />

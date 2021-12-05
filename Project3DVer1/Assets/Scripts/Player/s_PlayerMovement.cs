@@ -44,8 +44,8 @@ public class s_PlayerMovement : MonoBehaviour
         //cam
         mouseX = Input.GetAxisRaw("Mouse X");
         mouseY = Input.GetAxisRaw("Mouse Y");
-        rotX -= mouseY * MouseSensitive;
-        rotY += mouseX * MouseSensitive;
+        rotX -= mouseY * MouseSensitive * Time.unscaledDeltaTime;
+        rotY += mouseX * MouseSensitive * Time.unscaledDeltaTime;
         //player looking
         cam.transform.localRotation = Quaternion.Euler(rotX, 0, 0);
         transform.rotation = Quaternion.Euler(0, rotY, 0);

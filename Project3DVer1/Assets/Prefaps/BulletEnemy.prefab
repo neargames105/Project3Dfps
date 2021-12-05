@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 8891999107846799071}
   - component: {fileID: 899711103058159092}
   - component: {fileID: 8410813761291945027}
-  - component: {fileID: 6811289485035175827}
   - component: {fileID: 1905694812}
   - component: {fileID: 4269411436726409082}
   - component: {fileID: 913090437402096832}
+  - component: {fileID: 3111257917634913141}
   m_Layer: 0
   m_Name: BulletEnemy
   m_TagString: Untagged
@@ -43,7 +43,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7424644095791988053}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &8410813761291945027
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8eb73e8349946b94595148adde0d92e4, type: 2}
+  - {fileID: 2100000, guid: 59b5307890cfa3447900b698076692af, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -83,19 +83,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &6811289485035175827
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7424644095791988053}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &1905694812
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -232,3 +219,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 10
   randomDirection: 0.1
+--- !u!135 &3111257917634913141
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7424644095791988053}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.010000007
+  m_Center: {x: -0.0000000023283078, y: -0.0000000018626451, z: 5.89806e-17}

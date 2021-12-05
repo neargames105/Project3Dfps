@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 15
-  MouseSensitive: 1
+  MouseSensitive: 150
 --- !u!1 &5351058980224523811
 GameObject:
   m_ObjectHideFlags: 0
@@ -5142,7 +5142,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 74c14ce7bb7a6ad4a8b69f23833a0f79, type: 2}
+  - {fileID: 2100000, guid: 6fa29f3574930f24b8d5faefcd013c00, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5176,11 +5176,11 @@ ParticleSystemRenderer:
   m_RenderAlignment: 0
   m_Pivot: {x: 0, y: 0, z: 0}
   m_Flip: {x: 0, y: 0, z: 0}
-  m_UseCustomVertexStreams: 0
+  m_UseCustomVertexStreams: 1
   m_EnableGPUInstancing: 1
   m_ApplyActiveColorSpace: 1
   m_AllowRoll: 1
-  m_VertexStreams: 00010304
+  m_VertexStreams: 000304
   m_Mesh: {fileID: 0}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
@@ -5248,6 +5248,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2594753778320383341, guid: 27e8c30c754d03648b03f2b30af3f6b4,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c2102ca4e4a3ebf409e0e5dca0038eab, type: 2}
     - target: {fileID: 3525544658928050723, guid: 27e8c30c754d03648b03f2b30af3f6b4,
         type: 3}
       propertyPath: m_Name

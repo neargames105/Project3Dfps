@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 2028062911365472503}
   - component: {fileID: 2163481743065078191}
   - component: {fileID: 2348793069469552208}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -113,6 +113,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2028062911365472502}
     m_Modifications:
+    - target: {fileID: -7217828390678641911, guid: 6636c42e911eaa74b90777732abd301b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 6636c42e911eaa74b90777732abd301b,
         type: 3}
       propertyPath: m_RootOrder
@@ -187,6 +192,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: enemyfps
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 6636c42e911eaa74b90777732abd301b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5051746840642452563, guid: 6636c42e911eaa74b90777732abd301b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6687800826856340071, guid: 6636c42e911eaa74b90777732abd301b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7977819192417808284, guid: 6636c42e911eaa74b90777732abd301b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6636c42e911eaa74b90777732abd301b, type: 3}
