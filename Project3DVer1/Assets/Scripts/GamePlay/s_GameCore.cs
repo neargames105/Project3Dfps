@@ -8,9 +8,14 @@ public class s_GameCore : Singleton<s_GameCore>
     [HideInInspector] public Camera cam;
     [Range(0.03f,0.06f)] public float actionTime;
     public GunSystem gunSystem;
+
     public Transform gunTrans;
+
     public Transform gunHolder;
-    public ParticleSystem gunFlash;
+
+    public GameObject gunFlash;
+    public Transform flashPos;
+
     public LayerMask gun, itemLayer;
     //
     public InteractiveItem item;
@@ -33,7 +38,9 @@ public class s_GameCore : Singleton<s_GameCore>
                 if (gunSystem)
                 {
                     gunSystem.Fire(gunTrans.position, gunTrans.rotation);
-                    gunFlash.Play();
+                    //gunFlash.Play();
+
+                    Instantiate(gunFlash, flashPos.position, flashPos.rotation);
                 }
                 else if (item)
                 {
