@@ -23,6 +23,8 @@ public class s_LevelManage : Singleton<s_LevelManage>
         Player.GetComponent<s_PlayerMovement>().enabled = false;
         UIManager.Instance.panelComplete.SetActive(true);
         //
+        Time.timeScale = 1;
+        //
         MouseEnable();
     }
     public void MouseEnable()
