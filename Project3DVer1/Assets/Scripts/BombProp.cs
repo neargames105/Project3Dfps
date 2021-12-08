@@ -6,7 +6,7 @@ public class BombProp : MonoBehaviour
 {
     public GameObject explosion;
 
-    public float exploRadious;
+    [Range(6f , 8f)]public float exploRadious;
 
     [SerializeField] private LayerMask _enemy;
     private void OnCollisionEnter(Collision collision)

@@ -18,16 +18,11 @@ public class BulletEnemy : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.CompareTag("Enemy"))
-        {
-            collision.transform.GetComponent<Enemy>().Dead();
-            Destroy(gameObject);
-        }
-        else if (collision.collider.CompareTag("Wall"))
+        if (collision.collider.CompareTag("Wall"))
         {
             Destroy(gameObject);
         }
-        else if (collision.collider.CompareTag("Player"))
+        if (collision.collider.CompareTag("Player"))
         {
             s_LevelManage.Instance.GameOver();
             Destroy(gameObject);

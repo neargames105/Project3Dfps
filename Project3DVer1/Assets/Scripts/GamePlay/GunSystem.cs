@@ -3,7 +3,7 @@ using DG.Tweening;
 public class GunSystem : ItemBase
 {
     [SerializeField] private GameObject bullet;
-    [SerializeField] private int bulletHolder;
+    [Range(3,5)][SerializeField] private int bulletHolder;
 
     private Animator anim;
     public override void Awake()

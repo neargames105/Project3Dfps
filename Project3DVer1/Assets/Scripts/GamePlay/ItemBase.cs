@@ -6,7 +6,7 @@ using DG.Tweening;
 public class ItemBase : MonoBehaviour
 {
     [HideInInspector] public Rigidbody rb;
-    public float throwForced;
+    [Range(20f , 25f)]public float throwForced;
 
     public GameObject destroyPs;
     public virtual void Awake()

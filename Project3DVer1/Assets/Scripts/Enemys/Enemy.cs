@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private GameObject deadEffect;
     //action setting
     [Space(20)]
-    public float delay;
+    [Range(1f , 1.5f)] public float delay;
     [HideInInspector] public float delayOrigin;
     private Transform gun;
     public bool canDropGun;

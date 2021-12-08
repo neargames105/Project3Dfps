@@ -7,6 +7,7 @@ public class s_GameCore : Singleton<s_GameCore>
     [HideInInspector] public bool action;
     [HideInInspector] public Camera cam;
     [Range(0.03f,0.06f)] public float actionTime;
+    [Range(3f , 5f)] public float rangePickUp;
     public GunSystem gunSystem;
 
     public Transform gunTrans;
@@ -67,7 +68,7 @@ public class s_GameCore : Singleton<s_GameCore>
         //
         RaycastHit hit;
         //ray to gun
-        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 100, gun))
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, rangePickUp, gun))
         {
             //if ray then active pickuptext
             textPickUp.SetActive(true);
@@ -79,7 +80,7 @@ public class s_GameCore : Singleton<s_GameCore>
             }
         }
         //ray to item
-        else if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 100, itemLayer))
+        else if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, rangePickUp, itemLayer))
         {
             //if ray then active pickuptext
             textPickUp.SetActive(true);

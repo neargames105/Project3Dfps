@@ -6,11 +6,11 @@ public class s_PlayerMovement : MonoBehaviour
     private Rigidbody rb;
     private Camera cam;
     private Vector3 direction;
-    [SerializeField] private float playerSpeed;
+    [Range(15f , 20f)][SerializeField] private float playerSpeed;
     //Camera setting
     private float mouseX, mouseY;
     private float rotX, rotY;
-    [SerializeField] private float MouseSensitive;
+    [Range(100f , 150f)][SerializeField] private float MouseSensitive;
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();

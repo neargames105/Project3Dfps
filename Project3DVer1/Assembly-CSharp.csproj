@@ -78,6 +78,7 @@
     <Compile Include="Assets\Scripts\ItemCanBroke.cs" />
     <Compile Include="Assets\Scripts\Levels\Singleton.cs" />
     <Compile Include="Assets\Scripts\Levels\s_LevelManage.cs" />
+    <Compile Include="Assets\Scripts\PanelLoader.cs" />
     <Compile Include="Assets\Scripts\Player\s_PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\SceneLoader.cs" />
   </ItemGroup>
