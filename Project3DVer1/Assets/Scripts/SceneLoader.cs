@@ -17,6 +17,8 @@ public class SceneLoader : Singleton<SceneLoader>
 
         Transition.Instance.StartTrans();
 
+        Time.timeScale = 1;
+
         StartCoroutine(LoadSceneA(intOfScene));
     }
     public IEnumerator LoadSceneA(int intOfScene)
