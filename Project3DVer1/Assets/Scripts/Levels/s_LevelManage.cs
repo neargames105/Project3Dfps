@@ -1,44 +1,46 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 public class s_LevelManage : Singleton<s_LevelManage>
 {
-    public int EnemyCount;
-    [HideInInspector] public bool canAction;
-    public GameObject Player;
-    private void Start()
+    public bool canAction { get; private set; } = true;
+
+    private GameObject player;
+    private PlayerMovement _playerMovement;
+
+    //event
+    public UnityAction onGameWin;
+    public UnityAction onGameOver;
+
+    private void Awake()
     {
-        canAction = true;
+        player = GameObject.FindGameObjectWithTag("Player");
+        _playerMovement = player.GetComponent<PlayerMovement>();
+    }
+    private void SetGameMode(bool canAction, bool canMove, int scaleTime)
+    {
+        this.canAction = canAction;
+        _playerMovement.enabled = canMove;
+        Time.timeScale = scaleTime;
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
     public void GameOver()
     {
-        canAction = false;
-        UIManager.Instance.panelGameOver.SetActive(true);
-        Player.GetComponent<s_PlayerMovement>().enabled = false;
-        //
-        Time.timeScale = 1;
-        //
-        MouseEnable();
+        onGameOver?.Invoke();
+        SetGameMode(false, false, 1);
     }
 
     public void GameWin()
     {
-        canAction = false;
-        Player.GetComponent<s_PlayerMovement>().enabled = false;
-        UIManager.Instance.panelComplete.SetActive(true);
-        //
-        Time.timeScale = 1;
-        //
-        MouseEnable();
-    }
-    public void MouseEnable()
-    {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        onGameWin?.Invoke();
+        SetGameMode(false, false, 1);
     }
     public void EnemyCountToLevel()
     {
-        EnemyCount -= 1;
-        //if enemy <=0 the go to win
-        if (EnemyCount <= 0)
+        var enemyRemain = GameObject.FindGameObjectsWithTag("Enemy");
+
+        if (enemyRemain.Length-1 <= 0)
         {
             GameWin();
         }

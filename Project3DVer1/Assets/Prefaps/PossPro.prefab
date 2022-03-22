@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3db936aeabc272d408b80c08db1eede5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volume: {fileID: 0}
   vignette: {fileID: 0}
-  vigValue: 0.5
+  valueSlow: 0.5
+  valueNormal: 0.1
   smoothTime: 10

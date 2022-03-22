@@ -9,7 +9,7 @@ public class TutorialFirst : MonoBehaviour
     public GameObject CanvansTut;
     void Start()
     {
-        Player.GetComponent<s_PlayerMovement>().enabled = false;
+        Player.GetComponent<PlayerMovement>().enabled = false;
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -18,7 +18,7 @@ public class TutorialFirst : MonoBehaviour
     }
     public void Already()
     {
-        Player.GetComponent<s_PlayerMovement>().enabled = true;
+        Player.GetComponent<PlayerMovement>().enabled = true;
         Time.timeScale = 1;
 
         Cursor.lockState = CursorLockMode.Locked;

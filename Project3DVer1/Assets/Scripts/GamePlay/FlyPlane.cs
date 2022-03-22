@@ -9,7 +9,7 @@ public class FlyPlane : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, jumpForce , 0);
+            other.GetComponent<PlayerMovement>().Jump(this.jumpForce);
         }
     }
 }

@@ -21,6 +21,7 @@ public class MenuManage : MonoBehaviour
     public IEnumerator LoadLevel()
     {
         yield return new WaitForSeconds(2f);
+
         var scenename = "LEVEL_INDEX";
         if (PlayerPrefs.HasKey(scenename))
         {

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LangVersion>latest</LangVersion>
+    <LangVersion>7.3</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -53,6 +53,9 @@
     <UnityVersion>2019.4.30f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Assets\EffectExamples\Shared\Scripts\DecalDestroyer.cs" />
     <Compile Include="Assets\EffectExamples\Shared\Scripts\ExtinguishableFire.cs" />
     <Compile Include="Assets\EffectExamples\Shared\Scripts\GunAim.cs" />
@@ -75,11 +78,10 @@
     <Compile Include="Assets\Scripts\GameUi\MenuManage.cs" />
     <Compile Include="Assets\Scripts\GameUi\Transition.cs" />
     <Compile Include="Assets\Scripts\GameUi\UIManager.cs" />
-    <Compile Include="Assets\Scripts\ItemCanBroke.cs" />
     <Compile Include="Assets\Scripts\Levels\Singleton.cs" />
     <Compile Include="Assets\Scripts\Levels\s_LevelManage.cs" />
     <Compile Include="Assets\Scripts\PanelLoader.cs" />
-    <Compile Include="Assets\Scripts\Player\s_PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\SceneLoader.cs" />
     <Compile Include="Assets\Scripts\TutorialFirst.cs" />
   </ItemGroup>
@@ -674,6 +676,14 @@
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
       <Project>{587EE421-3D28-D55C-6AF2-AACBE69F3513}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
+    <ProjectReference Include="SimpleInput.Runtime.csproj">
+      <Project>{59EBC2FA-990A-8658-7B65-FAB7B845B6A9}</Project>
+      <Name>SimpleInput.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="SimpleInput.Editor.csproj">
+      <Project>{BE37BC76-15F6-BEBE-C9D6-662B36B0EF9A}</Project>
+      <Name>SimpleInput.Editor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

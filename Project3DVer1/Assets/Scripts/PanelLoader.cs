@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class PanelLoader : MonoBehaviour
 {
-    public GameObject panelLevel;
-    public void LoadPanel()
+    public void LoadPanel(GameObject panelAction)
     {
-        panelLevel.SetActive(true);
+        panelAction.SetActive(true);
+    }
+    public void ClosePanel(GameObject panelAction)
+    {
+        panelAction.SetActive(false);
+    }
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 
 public class Transition : Singleton<Transition>
 {
@@ -17,7 +14,7 @@ public class Transition : Singleton<Transition>
         if (Player)
         {
             CloseTrans();
-            Player.GetComponent<s_PlayerMovement>().enabled = false;
+            Player.GetComponent<PlayerMovement>().enabled = false;
             Invoke("PlayerStart", 1f);
         }
     }
@@ -31,7 +28,7 @@ public class Transition : Singleton<Transition>
     }
     private void PlayerStart()
     {
-        Player.GetComponent<s_PlayerMovement>().enabled = true;
+        Player.GetComponent<PlayerMovement>().enabled = true;
     }
 
 

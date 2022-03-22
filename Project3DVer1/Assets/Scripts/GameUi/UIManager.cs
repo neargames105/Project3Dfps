@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class UIManager : Singleton<UIManager>
@@ -9,20 +6,17 @@ public class UIManager : Singleton<UIManager>
     //
     [SerializeField] private int LevelIndex;
 
-    public GameObject panelComplete;
-    public GameObject panelGameOver;
+    [SerializeField] private GameObject panelComplete;
+    [SerializeField] private GameObject panelGameOver;
     //
     private const string LEVEL_INDEX = "LEVEL_INDEX";
     private void Start()
     {
-        // get level index and clamp value
         LevelIndex = PlayerPrefs.GetInt(LEVEL_INDEX, 0);
         //
-        panelComplete.SetActive(false);
-        panelGameOver.SetActive(false);
-
+        s_LevelManage.Instance.onGameOver += OnGameOver;
+        s_LevelManage.Instance.onGameWin += OnGameWin;
         //
-        //Debug.Log(SceneManager.sceneCountInBuildSettings);
     }
     public void OnNextLevel()
     {
@@ -36,5 +30,13 @@ public class UIManager : Singleton<UIManager>
     public void OnReloadLevel()
     {
         Time.timeScale = 1;
+    }
+    public void OnGameOver()
+    {
+        panelGameOver.SetActive(true);
+    }
+    public void OnGameWin()
+    {
+        panelComplete.SetActive(true);
     }
 }

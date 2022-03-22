@@ -4,9 +4,9 @@ public class s_Bullet : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] private float bulletSpeed;
     [SerializeField] private GameObject _destroyFX;
-    private void Update()
+    private void FixedUpdate()
     {
-        transform.position += bulletSpeed * Time.deltaTime * transform.forward;
+        transform.position += bulletSpeed * Time.fixedDeltaTime * transform.forward;
     }
     private void OnCollisionEnter(Collision collision)
     {

@@ -4,11 +4,14 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     // Start is called before the first frame update
+    [Header("Reference")]
     [HideInInspector] public GameObject player;
     [SerializeField] private GameObject gunDrop;
     [SerializeField] private GameObject bullet;
     [SerializeField] private GameObject deadEffect;
     //action setting
+
+    [Header("Config")]
     [Space(20)]
     [Range(1f , 1.5f)] public float delay;
     [HideInInspector] public float delayOrigin;

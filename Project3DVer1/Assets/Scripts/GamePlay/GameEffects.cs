@@ -5,39 +5,29 @@ using UnityEngine.Rendering.PostProcessing;
 
 public class GameEffects : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public PostProcessVolume volume;
+    private PostProcessVolume volume;
 
-    public Vignette vignette;
+    [SerializeField] private Vignette vignette;
 
-    public float vigValue;
+    [SerializeField] private float valueSlow;
 
-    private float h, v;
+    [SerializeField] private float valueNormal;
 
-    public float smoothTime = 0.3f;
+    [SerializeField] private float smoothTime = 0.3f;
+
+    private bool isSlow = true;
     private void Awake()
     {
         volume = GetComponent<PostProcessVolume>();
-    }
-    void Start()
-    {
         volume.profile.TryGetSettings(out vignette);
     }
-    void Update()
+    private void Update()
     {
-        //PostProcessVolume
-        h = Input.GetAxisRaw("Horizontal");
-        v = Input.GetAxisRaw("Vertical");
-    }
-    private void FixedUpdate()
-    {
-        if (h==0 || v==0)
-        {
-            vignette.intensity.value = vigValue;
-        }
-        if(h!=0 || v!=0)
-        {
-            vignette.intensity.value = Mathf.Lerp(vignette.intensity.value, 0.25f, smoothTime * Time.fixedDeltaTime);
-        }
+        var h = Input.GetAxisRaw("Horizontal");
+        var v = Input.GetAxisRaw("Vertical");
+
+        isSlow = (h != 0 || v != 0) ? false : true;
+        vignette.intensity.value = isSlow ? valueSlow : valueNormal;
+
     }
 }
